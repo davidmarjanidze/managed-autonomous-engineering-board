@@ -1,0 +1,33 @@
+{
+  "name": "managed-autonomous-engineering-board-mcp-vercel-functions",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build": "nest build && tsc-alias -p tsconfig.json",
+    "start": "node dist/main.js",
+    "start:dev": "nest start --watch",
+    "vercel:pull": "vercel pull --yes --environment=preview",
+    "vercel:pull:prod": "vercel pull --yes --environment=production",
+    "vercel:build": "vercel build",
+    "vercel:build:prod": "vercel build --prod",
+    "deploy:vercel": "npm run vercel:pull && npm run vercel:build && vercel deploy --prebuilt",
+    "deploy:vercel:prod": "npm run vercel:pull:prod && npm run vercel:build:prod && vercel deploy --prebuilt --prod"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.0.0",
+    "@nestjs/platform-express": "^11.0.0",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.2",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.0.0",
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.6.0",
+    "vercel": "^56.4.1"
+  }
+}

@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  backend:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run start:dev"
+    volumes:
+      - ./backend:/app
+      - backend_data:/app/data
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- --host"
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  backend_data:

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.npm-cache/
+.vercel/
+*.tsbuildinfo
+api/*.js
+api/*.js.map
+api/*.d.ts
+.vercel
